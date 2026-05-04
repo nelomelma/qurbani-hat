@@ -1,55 +1,45 @@
-import { createContext } from "react";
-import { authClient } from "../lib/auth-client";
+import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext(null);
 
 export default function AuthProvider({ children }) {
-  const { data: session, isPending } = authClient.useSession();
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const user = session?.user || null;
+  useEffect(() => {
+    const savedUser = localStorage.getItem("qurbaniUser");
 
-  const registerUser = async (name, email, password, image) => {
-    return await authClient.signUp.email({
-      name,
-      email,
-      password,
-      image,
-    });
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+
+    setLoading(false);
+  }, []);
+
+  const logOutUser = () => {
+    localStorage.removeItem("qurbaniUser");
+    setUser(null);
+    return Promise.resolve();
   };
 
-  const loginUser = async (email, password) => {
-    return await authClient.signIn.email({
-      email,
-      password,
-    });
-  };
-
-  const googleLogin = async () => {
-    return await authClient.signIn.social({
-      provider: "google",
-      callbackURL: "/",
-    });
-  };
-
-  const logOutUser = async () => {
-    return await authClient.signOut();
-  };
-
-  const updateUserInfo = async (name, image) => {
-    return await authClient.updateUser({
+  const updateUserInfo = (name, image) => {
+    const updatedUser = {
+      ...user,
       name,
       image,
-    });
+    };
+
+    localStorage.setItem("qurbaniUser", JSON.stringify(updatedUser));
+    setUser(updatedUser);
+
+    return Promise.resolve({ error: null });
   };
 
   return (
     <AuthContext.Provider
       value={{
         user,
-        loading: isPending,
-        registerUser,
-        loginUser,
-        googleLogin,
+        loading,
         logOutUser,
         updateUserInfo,
       }}
