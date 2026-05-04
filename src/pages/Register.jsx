@@ -7,6 +7,11 @@ export default function Register() {
   const handleRegister = (e) => {
     e.preventDefault();
 
+    const photo =
+      e.target.photo.value || "https://i.ibb.co/4pDNDk1/avatar.png";
+
+    console.log("Registered photo URL:", photo);
+
     toast.success("Registration successful. Please login now.");
     e.target.reset();
     navigate("/login");
@@ -23,7 +28,18 @@ export default function Register() {
 
         <input type="text" name="name" placeholder="Name" required />
         <input type="email" name="email" placeholder="Email" required />
-        <input type="text" name="photo" placeholder="Photo URL" required />
+
+        <input
+          type="text"
+          name="photo"
+          placeholder="Enter image URL, e.g. https://i.ibb.co/4pDNDk1/avatar.png"
+          required
+        />
+
+        <p style={{ fontSize: "12px", color: "gray", marginTop: "-5px" }}>
+          Paste a direct JPG or PNG image link for your profile photo.
+        </p>
+
         <input type="password" name="password" placeholder="Password" required />
 
         <button className="btn-primary">Register</button>
