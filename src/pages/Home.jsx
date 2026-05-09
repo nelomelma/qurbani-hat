@@ -1,8 +1,21 @@
 import { Link } from "react-router-dom";
-import animals from "../data/animals.json";
+import { useEffect, useState } from "react";
 import AnimalCard from "../components/AnimalCard";
 
 export default function Home() {
+  const [animals, setAnimals] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/animals.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setAnimals(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
   const featured = animals.slice(0, 4);
 
   return (
@@ -22,11 +35,16 @@ export default function Home() {
 
       <section className="section">
         <h2>Featured Animals</h2>
-        <div className="card-grid">
-          {featured.map((animal) => (
-            <AnimalCard key={animal.id} animal={animal} />
-          ))}
-        </div>
+
+        {loading ? (
+          <p className="loading">Loading featured animals...</p>
+        ) : (
+          <div className="card-grid">
+            {featured.map((animal) => (
+              <AnimalCard key={animal.id} animal={animal} />
+            ))}
+          </div>
+        )}
       </section>
 
       <section className="section tips">

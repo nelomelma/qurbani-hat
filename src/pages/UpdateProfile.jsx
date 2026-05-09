@@ -7,18 +7,21 @@ export default function UpdateProfile() {
   const { user, updateUserInfo } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleUpdate = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
 
     const name = e.target.name.value;
     const photo = e.target.photo.value;
 
-    updateUserInfo(name, photo)
-      .then(() => {
-        toast.success("Profile updated successfully");
-        navigate("/my-profile");
-      })
-      .catch((error) => toast.error(error.message));
+    const result = await updateUserInfo(name, photo);
+
+    if (result.error) {
+      toast.error(result.error);
+      return;
+    }
+
+    toast.success("Profile updated successfully");
+    navigate("/my-profile");
   };
 
   return (
@@ -29,7 +32,7 @@ export default function UpdateProfile() {
         <input
           type="text"
           name="name"
-          defaultValue={user?.displayName || ""}
+          defaultValue={user?.name || user?.displayName || ""}
           placeholder="Name"
           required
         />
@@ -37,12 +40,14 @@ export default function UpdateProfile() {
         <input
           type="text"
           name="photo"
-          defaultValue={user?.photoURL || ""}
+          defaultValue={user?.image || user?.photoURL || ""}
           placeholder="Photo URL"
           required
         />
 
-        <button className="btn-primary">Update Information</button>
+        <button className="btn-primary">
+          Update Information
+        </button>
       </form>
     </section>
   );

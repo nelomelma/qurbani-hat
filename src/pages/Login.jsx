@@ -1,42 +1,42 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import { toast } from "react-toastify";
+import { AuthContext } from "../provider/AuthProvider";
 
 export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { loginUser, googleLogin } = useContext(AuthContext);
 
-  const from = location.state || "/";
+  const from = location.state?.from?.pathname || "/";
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     const email = e.target.email.value;
+    const password = e.target.password.value;
 
-    const demoUser = {
-      name: "QurbaniHat User",
-      email,
-      image: "https://randomuser.me/api/portraits/women/44.jpg",
-    };
+    const result = await loginUser(email, password);
 
-    localStorage.setItem("qurbaniUser", JSON.stringify(demoUser));
+    if (result.error) {
+      toast.error(result.error);
+      return;
+    }
 
     toast.success("Login successful");
     navigate(from);
-    window.location.reload();
   };
 
-  const handleGoogleLogin = () => {
-    const demoUser = {
-      name: "Google User",
-      email: "googleuser@gmail.com",
-      image: "https://randomuser.me/api/portraits/women/44.jpg",
-    };
+  const handleGoogleLogin = async () => {
+    const result = await googleLogin();
 
-    localStorage.setItem("qurbaniUser", JSON.stringify(demoUser));
+    if (result.error) {
+      toast.error(result.error);
+      return;
+    }
 
     toast.success("Google login successful");
     navigate("/");
-    window.location.reload();
   };
 
   return (
@@ -45,11 +45,21 @@ export default function Login() {
         <h2>Login</h2>
 
         <input type="email" name="email" placeholder="Email" required />
-        <input type="password" name="password" placeholder="Password" required />
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
 
         <button className="btn-primary">Login</button>
 
-        <button type="button" onClick={handleGoogleLogin} className="google-btn">
+        <button
+          type="button"
+          onClick={handleGoogleLogin}
+          className="google-btn"
+        >
           Continue with Google
         </button>
 

@@ -1,57 +1,75 @@
-import { FaFacebookF, FaYoutube, FaInstagram } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaYoutube,
+  FaInstagram,
+} from "react-icons/fa";
+
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer
-      style={{
-        background: "#1f2937",
-        color: "white",
-        padding: "30px 20px",
-        textAlign: "center",
-      }}
-    >
-      {/* Title */}
-      <h3 style={{ marginBottom: "10px" }}>QurbaniHat</h3>
+    <footer className="footer">
+      <div className="footer-container">
 
-      {/* About */}
-      <p style={{ marginBottom: "20px" }}>
-        Your trusted platform for Qurbani livestock booking.
-      </p>
+        <div className="footer-section">
+          <h2>QurbaniHat</h2>
+          <p>
+            Your trusted platform for Qurbani livestock booking
+            across Bangladesh.
+          </p>
+        </div>
 
-      {/* Contact Section */}
-      <div style={{ marginBottom: "20px" }}>
-        <h4>Contact</h4>
-        <p>Email: support@qurbanihat.com</p>
-        <p>Phone: +880 1700-000000</p>
-        <p>Location: Dhaka, Bangladesh</p>
+        <div className="footer-section">
+          <h3>Quick Links</h3>
+
+          <Link to="/">Home</Link>
+          <Link to="/animals">All Animals</Link>
+          <Link to="/login">Login</Link>
+        </div>
+
+        <div className="footer-section">
+          <h3>Contact</h3>
+
+          <p>Email: support@qurbanihat.com</p>
+          <p>Phone: +880 1700-000000</p>
+          <p>Dhaka, Bangladesh</p>
+        </div>
+
+        <div className="footer-section">
+          <h3>Follow Us</h3>
+
+          <div className="social-icons">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaFacebookF />
+            </a>
+
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaYoutube />
+            </a>
+
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
       </div>
 
-      {/* Social Links */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "20px",
-          marginBottom: "20px",
-        }}
-      >
-        <a href="https://facebook.com" target="_blank" rel="noreferrer">
-          <FaFacebookF size={22} color="white" />
-        </a>
-
-        <a href="https://youtube.com" target="_blank" rel="noreferrer">
-          <FaYoutube size={22} color="white" />
-        </a>
-
-        <a href="https://instagram.com" target="_blank" rel="noreferrer">
-          <FaInstagram size={22} color="white" />
-        </a>
+      <div className="footer-bottom">
+        © {new Date().getFullYear()} QurbaniHat.
+        All rights reserved.
       </div>
-
-      {/* Footer Bottom */}
-      <p style={{ fontSize: "14px" }}>
-        © {new Date().getFullYear()} QurbaniHat. All rights reserved.
-      </p>
     </footer>
   );
 }

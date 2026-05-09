@@ -16,9 +16,53 @@ export default function AuthProvider({ children }) {
     setLoading(false);
   }, []);
 
+  const registerUser = async (name, email, photo, password) => {
+    const newUser = {
+      name,
+      email,
+      image: photo,
+      password,
+    };
+
+    localStorage.setItem("qurbaniUser", JSON.stringify(newUser));
+    setUser(newUser);
+
+    return { error: null };
+  };
+
+  const loginUser = async (email, password) => {
+    const savedUser = JSON.parse(localStorage.getItem("qurbaniUser"));
+
+    if (
+      !savedUser ||
+      savedUser.email !== email ||
+      savedUser.password !== password
+    ) {
+      return { error: "Invalid email or password" };
+    }
+
+    setUser(savedUser);
+
+    return { error: null };
+  };
+
+  const googleLogin = async () => {
+    const googleUser = {
+      name: "Google User",
+      email: "googleuser@gmail.com",
+      image: "https://i.ibb.co/4pDNDk1/avatar.png",
+    };
+
+    localStorage.setItem("qurbaniUser", JSON.stringify(googleUser));
+    setUser(googleUser);
+
+    return { error: null };
+  };
+
   const logOutUser = () => {
     localStorage.removeItem("qurbaniUser");
     setUser(null);
+
     return Promise.resolve();
   };
 
@@ -40,6 +84,9 @@ export default function AuthProvider({ children }) {
       value={{
         user,
         loading,
+        registerUser,
+        loginUser,
+        googleLogin,
         logOutUser,
         updateUserInfo,
       }}

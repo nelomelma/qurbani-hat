@@ -9,11 +9,17 @@ export default function MyProfile() {
     <section className="profile-page">
       <div className="profile-card">
         <img
-          src={user?.photoURL || "https://i.ibb.co/4pDNDk1/avatar.png"}
+          src={
+            user?.image ||
+            user?.photoURL ||
+            "https://i.ibb.co/4pDNDk1/avatar.png"
+          }
           alt="profile"
         />
-        <h2>{user?.displayName || "No Name Found"}</h2>
-        <p>{user?.email}</p>
+
+        <h2>{user?.name || user?.displayName || "No Name Found"}</h2>
+
+        <p>{user?.email || "No email found"}</p>
 
         <Link to="/update-profile" className="btn-primary">
           Update Information

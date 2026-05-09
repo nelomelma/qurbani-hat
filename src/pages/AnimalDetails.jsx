@@ -28,23 +28,61 @@ export default function AnimalDetails() {
         <div>
           <h2>{animal.name}</h2>
           <p>{animal.description}</p>
-          <p><strong>Type:</strong> {animal.type}</p>
-          <p><strong>Breed:</strong> {animal.breed}</p>
-          <p><strong>Price:</strong> ৳{animal.price}</p>
-          <p><strong>Weight:</strong> {animal.weight} kg</p>
-          <p><strong>Age:</strong> {animal.age} years</p>
-          <p><strong>Location:</strong> {animal.location}</p>
-          <p><strong>Category:</strong> {animal.category}</p>
+          <p>
+            <strong>Type:</strong> {animal.type}
+          </p>
+          <p>
+            <strong>Breed:</strong> {animal.breed}
+          </p>
+          <p>
+            <strong>Price:</strong> ৳{animal.price}
+          </p>
+          <p>
+            <strong>Weight:</strong> {animal.weight} kg
+          </p>
+          <p>
+            <strong>Age:</strong> {animal.age} years
+          </p>
+          <p>
+            <strong>Location:</strong> {animal.location}
+          </p>
+          <p>
+            <strong>Category:</strong> {animal.category}
+          </p>
         </div>
       </div>
 
       <form onSubmit={handleBooking} className="form-box">
         <h2>Booking Form</h2>
 
-        <input type="text" defaultValue={user?.displayName || ""} required />
-        <input type="email" defaultValue={user?.email || ""} required />
-        <input type="text" placeholder="Phone Number" required />
-        <textarea placeholder="Address" required></textarea>
+        <input
+          type="text"
+          name="name"
+          defaultValue={user?.name || user?.displayName || ""}
+          placeholder="Your Name"
+          required
+        />
+
+        <input
+          type="email"
+          name="email"
+          defaultValue={user?.email || ""}
+          placeholder="Your Email"
+          required
+        />
+
+        <input
+          type="text"
+          name="phone"
+          placeholder="Phone Number"
+          required
+        />
+
+        <textarea
+          name="address"
+          placeholder="Address"
+          required
+        ></textarea>
 
         <button className="btn-primary">Submit Booking</button>
       </form>

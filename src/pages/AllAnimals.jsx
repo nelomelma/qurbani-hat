@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import animalsData from "../data/animals.json";
 import AnimalCard from "../components/AnimalCard";
 
 export default function AllAnimals() {
@@ -7,10 +6,13 @@ export default function AllAnimals() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      setAnimals(animalsData);
-      setLoading(false);
-    }, 700);
+    fetch("/animals.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setAnimals(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
   }, []);
 
   const handleSort = (e) => {

@@ -17,15 +17,15 @@ export const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       {
-        path: "/",
+        index: true,
         element: <Home />,
       },
       {
-        path: "/animals",
+        path: "animals",
         element: <AllAnimals />,
       },
       {
-        path: "/details-page/:id",
+        path: "details-page/:id",
         element: (
           <PrivateRoute>
             <AnimalDetails />
@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/my-profile",
+        path: "my-profile",
         element: (
           <PrivateRoute>
             <MyProfile />
@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/update-profile",
+        path: "update-profile",
         element: (
           <PrivateRoute>
             <UpdateProfile />
@@ -49,12 +49,16 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/login",
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/register",
+        path: "register",
         element: <Register />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

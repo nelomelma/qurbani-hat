@@ -29,7 +29,11 @@ export default function Navbar() {
           <>
             <img
               className="avatar"
-              src={user.photoURL || "https://i.ibb.co/4pDNDk1/avatar.png"}
+              src={
+                user.image ||
+                user.photoURL ||
+                "https://i.ibb.co/4pDNDk1/avatar.png"
+              }
               alt="profile"
             />
             <button onClick={handleLogout}>Logout</button>

@@ -1,24 +1,43 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import { toast } from "react-toastify";
+import { AuthContext } from "../provider/AuthProvider";
 
 export default function Register() {
   const navigate = useNavigate();
+  const { registerUser, googleLogin } = useContext(AuthContext);
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
+    const name = e.target.name.value;
+    const email = e.target.email.value;
     const photo =
       e.target.photo.value || "https://i.ibb.co/4pDNDk1/avatar.png";
+    const password = e.target.password.value;
 
-    console.log("Registered photo URL:", photo);
+    const result = await registerUser(name, email, photo, password);
+
+    if (result.error) {
+      toast.error(result.error);
+      return;
+    }
 
     toast.success("Registration successful. Please login now.");
     e.target.reset();
     navigate("/login");
   };
 
-  const handleGoogleLogin = () => {
-    toast.info("Google login is shown as required. Please use email login for demo.");
+  const handleGoogleLogin = async () => {
+    const result = await googleLogin();
+
+    if (result.error) {
+      toast.error(result.error);
+      return;
+    }
+
+    toast.success("Google login successful");
+    navigate("/");
   };
 
   return (
@@ -32,19 +51,24 @@ export default function Register() {
         <input
           type="text"
           name="photo"
-          placeholder="Enter image URL, e.g. https://i.ibb.co/4pDNDk1/avatar.png"
+          placeholder="Photo URL"
           required
         />
 
-        <p style={{ fontSize: "12px", color: "gray", marginTop: "-5px" }}>
-          Paste a direct JPG or PNG image link for your profile photo.
-        </p>
-
-        <input type="password" name="password" placeholder="Password" required />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
 
         <button className="btn-primary">Register</button>
 
-        <button type="button" onClick={handleGoogleLogin} className="google-btn">
+        <button
+          type="button"
+          onClick={handleGoogleLogin}
+          className="google-btn"
+        >
           Continue with Google
         </button>
 
