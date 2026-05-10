@@ -47,6 +47,7 @@ This project uses environment variables for secure configuration setup.
 
 Example:
 
+```env
 VITE_AUTH_URL=
 BETTER_AUTH_URL=
 BETTER_AUTH_SECRET=
