@@ -1,36 +1,81 @@
 # QurbaniHat – Livestock Booking Platform
 
 ## 🌐 Live URL
-https://qurbani-hat-delta.vercel.app
+
+https://qurbani-hat-delta.vercel.app/
+
+---
 
 ## 📌 Project Purpose
-QurbaniHat is a simple web application designed to help users explore and book livestock for Qurbani. Users can browse animals, view detailed information, and simulate booking through an easy-to-use interface.
+
+QurbaniHat is a modern livestock booking platform designed to help users explore and book Qurbani animals easily online. Users can browse animals, view detailed information, register/login, and place booking requests through a responsive and user-friendly interface.
 
 ---
 
 ## 🚀 Key Features
-- Browse all available Qurbani animals (cow, goat, etc.)
-- View detailed information for each animal
-- User registration and login interface
-- Protected pages (Details and Profile require login)
-- Booking form with success message (no database storage)
-- Responsive design for mobile, tablet, and desktop
-- Social media links in footer
-- Toast notifications for user actions
+
+* Browse available Qurbani animals including cows and goats
+* View detailed information for each animal
+* User registration and login system
+* Protected private routes for details and profile pages
+* Booking form with success toast notification
+* Profile update feature
+* Sort animals by price (Low to High / High to Low)
+* Responsive design for mobile, tablet, and desktop
+* Social media links in footer
+* Loading state for animal data
+* Custom 404 Not Found page
+* Animation effects using Animate.css
 
 ---
 
 ## 📦 NPM Packages Used
-- react
-- react-dom
-- react-router-dom
-- react-toastify
-- react-icons
-- animate.css
-- vite
+
+* react
+* react-dom
+* react-router-dom
+* react-toastify
+* react-icons
+* animate.css
+* vite
+
+---
+
+## 🔐 Environment Variables
+
+This project uses environment variables for secure configuration setup.
+
+Example:
+
+VITE_AUTH_URL=
+BETTER_AUTH_URL=
+BETTER_AUTH_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
 
 ---
 
 ## 📁 Notes
-- This project is frontend-focused and does not store user data permanently
-- Authentication is simulated for demonstration purposes
+
+* This project is frontend-focused and demonstrates core React concepts.
+* User booking data is not stored permanently.
+* Environment variables are used for secure configuration setup.
+
+---
+
+## 🛠️ Technologies Used
+
+* React
+* Vite
+* JavaScript
+* CSS3
+* React Router
+* React Toastify
+* Animate.css
+
+---
+
+## 👨‍💻 Developer
+
+Nelom Akter Elma
+
