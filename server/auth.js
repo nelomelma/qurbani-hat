@@ -1,3 +1,4 @@
+
 import dotenv from "dotenv";
 dotenv.config({ path: ".env.local" });
 
@@ -18,6 +19,14 @@ export const auth = betterAuth({
     "http://localhost:5174",
     "https://qurbani-hat-delta.vercel.app",
   ],
+
+  advanced: {
+    defaultCookieAttributes: {
+      sameSite: "none",
+      secure: true,
+      httpOnly: true,
+    },
+  },
 
   emailAndPassword: {
     enabled: true,
