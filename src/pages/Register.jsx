@@ -36,8 +36,7 @@ export default function Register() {
       return;
     }
 
-    toast.success("Google login successful");
-    navigate("/");
+    // Google OAuth redirects the browser; success is verified on return.
   };
 
   return (
