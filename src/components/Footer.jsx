@@ -1,3 +1,4 @@
+
 import {
   FaFacebookF,
   FaYoutube,
@@ -25,6 +26,8 @@ export default function Footer() {
           <Link to="/">Home</Link>
           <Link to="/animals">All Animals</Link>
           <Link to="/login">Login</Link>
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/terms-of-service">Terms of Service</Link>
         </div>
 
         <div className="footer-section">
@@ -43,6 +46,7 @@ export default function Footer() {
               href="https://facebook.com"
               target="_blank"
               rel="noreferrer"
+              aria-label="Facebook"
             >
               <FaFacebookF />
             </a>
@@ -51,6 +55,7 @@ export default function Footer() {
               href="https://youtube.com"
               target="_blank"
               rel="noreferrer"
+              aria-label="YouTube"
             >
               <FaYoutube />
             </a>
@@ -59,11 +64,13 @@ export default function Footer() {
               href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
+              aria-label="Instagram"
             >
               <FaInstagram />
             </a>
           </div>
         </div>
+
       </div>
 
       <div className="footer-bottom">

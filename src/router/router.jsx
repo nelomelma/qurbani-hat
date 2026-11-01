@@ -1,4 +1,6 @@
+
 import { createBrowserRouter } from "react-router-dom";
+
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
 import AllAnimals from "../pages/AllAnimals";
@@ -7,6 +9,8 @@ import Register from "../pages/Register";
 import AnimalDetails from "../pages/AnimalDetails";
 import MyProfile from "../pages/MyProfile";
 import UpdateProfile from "../pages/UpdateProfile";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import TermsOfService from "../pages/TermsOfService";
 import NotFound from "../pages/NotFound";
 import PrivateRoute from "../components/PrivateRoute";
 
@@ -55,6 +59,14 @@ export const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "privacy-policy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "terms-of-service",
+        element: <TermsOfService />,
       },
       {
         path: "*",
