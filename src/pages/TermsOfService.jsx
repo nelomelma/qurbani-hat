@@ -13,14 +13,10 @@ export default function TermsOfService() {
         }}
       >
         <h1>Terms of Service</h1>
-        <p>Last updated: November 1, 2026</p>
 
         <h2>1. About QurbaniHat</h2>
         <p>
-          QurbaniHat is an educational demonstration
-          project created for a university assignment
-          and professional portfolio. It is not a
-          commercial livestock marketplace.
+          QurbaniHat is a professional portfolio. It is a livestock marketplace.
         </p>
 
         <h2>2. Use of the Website</h2>
@@ -33,7 +29,7 @@ export default function TermsOfService() {
         <h2>3. Demo Bookings</h2>
         <p>
           All animal bookings are demonstrations only.
-          No real purchase, reservation, delivery,
+          Purchase, reservation, delivery,
           or payment is completed through this website.
         </p>
 
@@ -48,7 +44,7 @@ export default function TermsOfService() {
         <p>
           Animal listings, prices, descriptions,
           and images are provided for demonstration
-          purposes and do not represent real offers.
+          purposes.
         </p>
 
         <h2>6. Availability</h2>
@@ -60,8 +56,7 @@ export default function TermsOfService() {
 
         <h2>7. Contact</h2>
         <p>
-          Questions about this project can be
-          directed to the project developer.
+        Phone Number, Email are available. 
         </p>
       </div>
     </section>

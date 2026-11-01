@@ -14,13 +14,9 @@ export default function PrivacyPolicy() {
       >
         <h1>Privacy Policy</h1>
 
-        <p>Last updated: November 1, 2026</p>
-
         <p>
-          Welcome to QurbaniHat. This website is an educational
-          demonstration project developed for a university
-          assignment and professional portfolio purposes.
-          It is not a real livestock marketplace.
+          Welcome to QurbaniHat. This website is a professional portfolio purposes.
+          It is a livestock marketplace.
         </p>
 
         <h2>1. Information We Collect</h2>
@@ -51,7 +47,6 @@ export default function PrivacyPolicy() {
           Account information is managed through
           Better Auth and a PostgreSQL database.
           Authentication sessions may use cookies.
-          No online payment processing is provided.
         </p>
 
         <h2>5. Animal Booking</h2>
@@ -71,7 +66,7 @@ export default function PrivacyPolicy() {
 
         <h2>7. Contact</h2>
         <p>
-          For questions about this educational project,
+          For questions about the marketplace,
           please contact the project developer through
           the contact information provided on the website.
         </p>
