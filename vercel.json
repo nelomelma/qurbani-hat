@@ -1,5 +1,10 @@
+
 {
   "rewrites": [
+    {
+      "source": "/api/auth/:path*",
+      "destination": "https://qurbani-hat-backend.onrender.com/api/auth/:path*"
+    },
     {
       "source": "/(.*)",
       "destination": "/"

@@ -9,10 +9,16 @@ const database = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
+const isProduction = process.env.NODE_ENV === "production";
+
 export const auth = betterAuth({
   database,
+
   secret: process.env.BETTER_AUTH_SECRET,
-  baseURL: process.env.BETTER_AUTH_URL || "http://localhost:5000",
+
+  baseURL:
+    process.env.BETTER_AUTH_URL ||
+    "http://localhost:5000",
 
   trustedOrigins: [
     "http://localhost:5173",
@@ -21,9 +27,10 @@ export const auth = betterAuth({
   ],
 
   advanced: {
+    useSecureCookies: isProduction,
     defaultCookieAttributes: {
-      sameSite: "none",
-      secure: true,
+      sameSite: isProduction ? "lax" : "lax",
+      secure: isProduction,
       httpOnly: true,
     },
   },
